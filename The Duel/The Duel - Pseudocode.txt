@@ -1,0 +1,25 @@
+The Duel ->  pseudo code map
+
+class Game:
+	variables	const short MaxHandSize = 3;
+			short turnCount;
+			'card values' eg. Ace, Jack, Queen, King
+	->function nextTurn( ){increases turn count by 1, triggers func Player::drawCard( ) and func AI::aiDrawCard( )}
+	->function winRLose( ){checks to see if player won/drew/lost, switch win[case1: increase score by 1]/drew[case2]/lost[case3: increase aiScore by 1]/error[default: display error msg], then calls func updateScore( )}
+	->function updateScore( ){reads value of score and aiScore and prints to screen new score and aiScore values}
+
+class Player:
+	variables	short card1, card2, card3; //(=14)
+			short handSize;
+			short numTricks;
+			short chosenCard;
+			short pChoice; //numeric value of card played
+	->function drawCard( ){checks card1/2/3 to see if any are of value 14, random number between 0-13 assigned to card with value 14, updates handSize, then prints to screen card value}
+	->function playerPlay( ){asks for user input 1/2/3, then plays card1/2/3, if userInput<1 || >3 {error msg "please select a card in your hand to play"}, set selected card to =14;}
+
+class AI:
+	variables	short card1, card2, card3; //(=14)
+			short aiNumTricks;
+			short aiChoice;
+	->function aiDrawCard( ){checks card1/2/3 to see if any are of value 14, random number between 0-13 assigned to card with value 14, updates aiHandSize}
+	->function playCard( ){switch card1[case1: set card1 = 14;]/card2[case2: set card2 = 14;]/card3[case3: set card3 = 14;], then print to screen value of card played}
